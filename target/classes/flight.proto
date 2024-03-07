@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package bookingSystem;
+
+message Flight {
+  string flight_number = 1;
+  string airline = 2;
+  double price = 3;
+  string departure_location = 4;
+  string destination_location = 5;
+}

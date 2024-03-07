@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package bookingSystem;
+
+message Hotel {
+  string hotel_name = 1;
+  string hotel_location = 2;
+  string checkin_date = 3;
+  string checkout_date = 4;
+}

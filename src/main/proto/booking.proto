@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+package bookingSystem;
+
+import "flight.proto";
+import "hotel.proto";
+import "car.proto";
+
+// Define the services
+service BookingService {
+  rpc addFlight(FlightBookingRequest) returns (BookingResponse);
+  rpc searchFlight(SearchFlightRequest) returns (FlightList);
+  rpc bookFlight(FlightBookingRequest)  returns (BookingResponse);
+  rpc getAllFlights(Empty) returns (FlightList);
+  rpc getFlightTicketForUser(UserIdRequest) returns (BookingResponse);
+
+  rpc addHotel(AddHotelRequest) returns (BookingResponse);
+  rpc searchHotel(SearchHotelRequest) returns (Hotels);
+  rpc bookHotel(HotelBookingRequest)  returns (BookingResponse);
+  rpc getHotelReservationByUser(UserIdRequest) returns (BookingResponse);
+
+  rpc rentCar(CarBookingRequest) returns (BookingResponse);
+  rpc getCarBookingByUser(UserIdRequest) returns (BookingResponse);
+}
+
+// flight
+message SearchFlightRequest {
+  string departure_location = 1;
+  string destination_location = 2;
+  string departure_date = 3;
+}
+
+message FlightBookingRequest {
+  string user = 1;
+  Flight flight = 2;
+}
+
+message Empty {}
+
+message FlightList {
+  repeated Flight flights = 1;
+}
+
+message UserIdRequest {
+  string userName = 1;
+}
+
+//hotel
+message HotelBookingRequest {
+  string user = 1;
+  Hotel hotel = 2;
+}
+
+// car rental
+message CarBookingRequest {
+  string user = 1;
+  Car car = 2;
+}
+
+message BookingResponse {
+  string status_code = 1;
+  string message = 2;
+}
+
+message AddHotelRequest {
+  Hotel hotel = 1;
+}
+
+message SearchHotelRequest {
+  string hotel_location = 1;
+}
+
+message Hotels {
+  repeated Hotel hotels = 1;
+}
+
+

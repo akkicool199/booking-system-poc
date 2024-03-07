@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package bookingSystem;
+
+message Car {
+  string car_number_plate = 1;
+  string car_driver = 2;
+  string driver_contact = 3;
+  string travel_date = 4;
+}
